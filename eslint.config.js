@@ -29,6 +29,7 @@ export default defineConfig([
       "no-unsafe-finally": "off",
       "no-unused-vars": "off",
       "react/jsx-key": "off",
+      'css/ruleorselectorexpected': 'off',
     },
   },
 ]);
