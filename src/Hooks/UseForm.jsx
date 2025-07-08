@@ -2,8 +2,7 @@ import React from "react";
 
 const types = {
   email: {
-    regex:
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    regex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
     message: "Preencha um email válido",
   },
 };
@@ -31,7 +30,7 @@ const UseForm = (type) => {
   };
 
   const onChange = ({ target }) => {
-    if (erro ) validate(target.value)
+    if (erro) Validate(target.value);
     setValue(target.value);
   };
 
@@ -41,7 +40,7 @@ const UseForm = (type) => {
     setValue,
     onChange,
     Validate: () => Validate(value),
-    onBlur: () => Validate(value)
+    onBlur: () => Validate(value),
   };
 };
 

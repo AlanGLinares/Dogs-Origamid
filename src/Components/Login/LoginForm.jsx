@@ -1,46 +1,65 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import UseForm from "../../Hooks/UseForm";
-import Button from "../Forms/Button";
 import Input from "../Forms/Input";
+import { UserContext } from "../../UserContext";
+import Error from "../../Help/Error";
+import style from "./LoginForm.module.css";
+import Button from '../Forms/Button'
+import buttonStyle from '../Forms/Button.module.css'
 
 const LoginForm = () => {
   const username = UseForm();
   const password = UseForm();
 
-  console.log(username);
+  const { userLogin, erro, loading } = React.useContext(UserContext);
 
-  const handleSubmit = (event) => {
+  // React.useEffect(() => {
+  //   const token = window.localStorage.getItem("token");
+  //   if (token) {
+  //     getUser(token);
+  //   }
+  // }, []);
+
+  // const getUser = async (token) => {
+  //   const { url, options } = USER_GET(token);
+
+  //   const response = await fetch(url, options);
+  //   const json = await response.json();
+  // };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (username.Validate() && password.Validate()) {
-      fetch("https://dogsapi.origamid.dev/json/jwt-auth/v1/token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(),
-      })
-        .then((response) => {
-          console.log(response);
-          return response.json();
-        })
-        .then((json) => {
-          console.log(json);
-        });
+      userLogin(username.value, password.value);
     }
   };
 
   return (
     <>
-      <section>
-        <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
+      <section className="animeLeft">
+        <h1 className="title">Login</h1>
+        <form className={style.form} onSubmit={handleSubmit}>
           <Input label="Usuario" type="text" name="username" {...username} />
           <Input label="Senha" type="password" name="password" {...password} />
-          <Button>Entrar</Button>
+          {loading ? (
+            <Button disabled>Carregando...</Button>
+          ) : (
+            <Button>Entrar</Button>
+          )}
+          <Error erro={erro} />
         </form>
-        <Link to="/login/criar">Cadastro</Link>
+        <Link className={style.lost} to="/login/perdeu">
+          Perdeu a Senha ?
+        </Link>
+        <div className={style.cadastro}>
+          <h2 className={style.subtitle}>Cadastre-se</h2>
+          <p>Ainda não possui conta? Cadastre-se no site.</p>
+            <Link className={buttonStyle.button} to="/login/criar">
+              Cadastro
+            </Link>
+        </div>
       </section>
     </>
   );

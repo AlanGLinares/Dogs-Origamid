@@ -2,20 +2,33 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import Home from './Components/Home'
-import Login from './Components/Login/Login'
+import Home from "./Components/Home";
+import Login from "./Components/Login/Login";
+import { UserStorage } from "./UserContext";
 import "./App.css";
+import User from "./Components/User/User";
+import ProtectedRouter from "./Help/ProtectedRouter";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login/*' element={<Login />} />
-        </Routes>
-        <Footer />
+        <UserStorage>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="login/*" element={<Login />} />
+            <Route
+              path="conta/*"
+              element={
+                <ProtectedRouter>
+                  <User />
+                </ProtectedRouter>
+              }
+            />
+          </Routes>
+          <Footer />
+        </UserStorage>
       </BrowserRouter>
     </>
   );
