@@ -1,7 +1,7 @@
 import React from "react";
 import { createContext } from "react";
 import { TOKEN_POST, USER_GET, TOKEN_VALIDATE_POST } from "./api";
-import { useNavigate } from "react-router-dom";
+
 
 export const UserContext = createContext();
 
@@ -10,7 +10,7 @@ export const UserStorage = ({ children }) => {
   const [login, setLogin] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [erro, setErro] = React.useState(false);
-  const navigate = useNavigate();
+
 
   const getUser = async (token) => {
     const { url, options } = USER_GET(token);
@@ -30,7 +30,6 @@ export const UserStorage = ({ children }) => {
       const { token } = await tokenRes.json();
       window.localStorage.setItem("token", token);
       await getUser(token);
-      navigate("/conta");
     } catch (err) {
       setErro(err.message);
       setLogin(false);
@@ -44,9 +43,8 @@ export const UserStorage = ({ children }) => {
     setErro(null);
     setLoading(false);
     setLogin(false);
-    navigate("/login");
     window.localStorage.removeItem("token");
-  }, [navigate]);
+  }, []);
 
   React.useEffect(() => {
     async function autoLogin() {
@@ -74,7 +72,7 @@ export const UserStorage = ({ children }) => {
   return (
     <>
       <UserContext.Provider
-        value={{ userLogin, data, userLogout, erro, loading, login, navigate }}
+        value={{ userLogin, data, userLogout, erro, loading, login,  }}
       >
         {children}
       </UserContext.Provider>
