@@ -4,7 +4,7 @@ import style from './Footer.module.css'
 const Footer = () => {
   return (
     <>
-      <footer>Footer</footer>
+      <footer></footer>
     </>
   )
 }
