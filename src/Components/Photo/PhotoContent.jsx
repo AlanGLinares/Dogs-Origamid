@@ -8,7 +8,6 @@ const PhotoContent = ({ data }) => {
 
   const { comments, photo } = data;
 
-  console.log(data);
   return (
     <div className={style.photo}>
       <div className={style.img}>
@@ -16,7 +15,7 @@ const PhotoContent = ({ data }) => {
       </div>
       <div className={style.details}>
         <div>
-          <p>
+          <p className={style.author}>
             <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
             <span className={style.visualizacao}>{photo.acessos}</span>
           </p>
