@@ -28,6 +28,9 @@
   font-size: 1.2rem;
   background: rgba(0, 0, 0, 0.3);
   display: none;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .visualizacao::before {
@@ -40,8 +43,6 @@
 }
 
 .photo:hover .visualizacao {
-  text-align: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
+
 }

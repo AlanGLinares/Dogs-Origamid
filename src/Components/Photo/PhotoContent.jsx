@@ -4,7 +4,6 @@ import style from "./PhotoContent.module.css";
 import PhotoComments from './PhotoComments.jsx'
 
 const PhotoContent = ({ data }) => {
-  console.log(data);
 
   const { comments, photo } = data;
 
