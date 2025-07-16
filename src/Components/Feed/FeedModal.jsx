@@ -14,6 +14,7 @@ const FeedModal = ({ photo , setModalPhoto }) => {
     request(url, options);
   }, [photo, request]);
 
+  // isso faz o modal fechar ao clica fora , se clica no elemento em si não vai fechar , esse setModalPhoto está sendo puxado lá de Feed que é um props e está sendo destruturada.
   function handleOutsideClick (event) {
     if (event.target === event.currentTarget)
     setModalPhoto(null)
