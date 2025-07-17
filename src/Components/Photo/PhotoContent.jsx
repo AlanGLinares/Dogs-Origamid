@@ -10,8 +10,6 @@ const PhotoContent = ({ data }) => {
 
   const user = React.useContext(UserContext);
 
-  console.log(user)
-
   return (
     <div className={style.photo}>
       <div className={style.img}>

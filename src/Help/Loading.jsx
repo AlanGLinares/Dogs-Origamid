@@ -2,7 +2,24 @@ import React from "react";
 import style from "./Loading.module.css";
 
 const Loading = () => {
-  const [step, setStep] = React.useState(2);
+  const [step, setStep] = React.useState(0);
+
+  React.useEffect(() => {
+    const updateStep = () => {
+      setStep((step) => {
+        if (step < 3) {
+          return step + 1;
+        } else {
+          return null;
+        }
+      });
+    };
+
+    const interval = setInterval(() => {
+      updateStep();
+    }, 300);
+    return () => clearInterval(interval);
+  }, []);
 
   function displayStep(index) {
     return {
@@ -10,11 +27,10 @@ const Loading = () => {
     };
   }
 
-
-return (
+  return (
     <div className={style.wrapper}>
       <div className={style.loading}>
-      <svg
+        <svg
           width="46"
           height="31"
           viewBox="0 0 46 31"
