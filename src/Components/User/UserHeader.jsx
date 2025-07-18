@@ -22,7 +22,7 @@ const UserHeader = () => {
         setTitle("Minha Conta")
         break;
     }
-  }, [location]);
+  }, [location]);''
 
   return (
     <>
