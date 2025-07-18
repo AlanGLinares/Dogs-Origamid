@@ -5,7 +5,7 @@ import UseFetch from "../../Hooks/UseFetch";
 import Error from "../../Help/Error";
 import style from "./PhotoCommentsForm.module.css"
 
-const PhotoCommentsForm = ({ id, setComments }) => {
+const PhotoCommentsForm = ({ id, setComments , single }) => {
   const [comment, setComment] = React.useState("");
   const { erro, request } = UseFetch();
 
@@ -22,7 +22,7 @@ const PhotoCommentsForm = ({ id, setComments }) => {
   };
 
   return (
-    <form className={style.form} onSubmit={handleSubmit}>
+    <form className={`${style.form}  ${single ? style.photoSingle : "" }`} onSubmit={handleSubmit}>
       <textarea
         id="comment"
         className={style.textarea}
