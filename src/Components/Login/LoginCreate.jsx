@@ -7,6 +7,7 @@ import { USER_POST } from "../../api";
 import { UserContext } from "../../UserContext";
 import UseFetch from "../../Hooks/UseFetch";
 import Error from "../../Help/Error";
+import Head from "../../Help/Head";
 
 const LoginCreate = () => {
   const username = UseForm();
@@ -30,6 +31,7 @@ const LoginCreate = () => {
 
   return (
     <section className="animeLeft">
+      <Head title="Criar Conta" />
       <div className={style.logincreate}>
         <h1 className="title">Cadastre-se</h1>
         <form className="form" onSubmit={handleSubmit}>

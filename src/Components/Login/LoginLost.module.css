@@ -1,0 +1,11 @@
+.loginLost {
+  margin-top: 20vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loginLost input {
+  display: block;
+  max-width: 28.125rem;
+}
